@@ -80,8 +80,8 @@ Improvements welcome! See [Contributing Guide](docs/CONTRIBUTING.md)
 
 ## License
 
-[Your License Here]
+MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Version
 
-Current version: $(cat VERSION)
+Current version: 0.1.0
