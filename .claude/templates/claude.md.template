@@ -1,0 +1,333 @@
+# Project: [YOUR PROJECT NAME]
+
+## Quick Links
+- [Architecture Overview](project/architecture/tech-stack.md)
+- [Business Requirements](project/business/requirements.md)
+- [Code Standards](project/standards/code-style.md)
+- [Security Checklist](_template/checklists/security-review.md)
+- [Current Features](project/features/backlog.md)
+
+## Project Context
+
+**What we're building:** [Brief description of the product/application]
+
+**For whom:** [Target users, customers, or audience]
+
+**Why it exists:** [Business problem we're solving, market opportunity]
+
+**Success looks like:** [Key metrics, goals, and definition of success]
+
+## Tech Stack
+
+- **Frontend:** [e.g., React, Vue, Svelte, vanilla JS]
+- **Backend:** [e.g., Node.js/Express, Python/FastAPI, Go, Rails]
+- **Database:** [e.g., PostgreSQL, MongoDB, MySQL]
+- **Infrastructure:** [e.g., AWS, GCP, Azure, Vercel, Railway]
+- **CI/CD:** [e.g., GitHub Actions, GitLab CI, CircleCI]
+- **Key Libraries:** [e.g., authentication, payment processing, etc.]
+
+See [detailed tech stack documentation](project/architecture/tech-stack.md) for rationale.
+
+## Development Workflow
+
+### Before Starting Any Feature
+1. Review [pre-feature checklist](_template/checklists/pre-feature-start.md)
+2. Understand requirements - ask clarifying questions
+3. Document in `project/features/[feature-name]/requirements.md`
+4. Create Architecture Decision Record if needed (for significant decisions)
+5. Create feature branch: `feature/[feature-name]` or `hotfix/[fix-name]`
+
+### During Development
+1. Follow [code standards](project/standards/code-style.md)
+2. **Test-driven development**: Write tests alongside code
+3. **Separate concerns**: Keep business logic separate from display logic
+4. **Security mindset**: Think like a pentester - what could go wrong?
+5. **Document as you go**: Complex logic needs comments explaining "why"
+6. **Interactive process**: Ask questions, don't assume
+
+### Before Committing
+1. Run through [pre-commit checklist](_template/checklists/pre-commit.md)
+2. Run linter: `[your lint command]`
+3. Run tests: `[your test command]`
+4. Fix all warnings and errors
+5. Review your own diff
+6. Write clear commit message (follow Conventional Commits)
+
+### Before Merging to Main
+1. Complete [pre-merge checklist](_template/checklists/pre-merge.md)
+2. Ensure all CI checks pass
+3. Get required code reviews
+4. Test in staging environment (if applicable)
+5. Update CHANGELOG if needed
+6. Squash commits if appropriate
+
+## Specialized Agents
+
+When you need focused expertise, reference these agents:
+
+- **[Architect](_template/agents/architect.md)**: Architecture decisions, system design, scalability, ADRs
+- **[Security](_template/agents/security.md)**: Security reviews, threat modeling, vulnerability assessment
+- **[Backend](_template/agents/backend.md)**: API design, business logic, database optimization, performance
+- **[Frontend](_template/agents/frontend.md)**: UI/UX, accessibility, responsive design, component architecture
+- **[DevOps](_template/agents/devops.md)**: Infrastructure, deployment, monitoring, CI/CD pipelines
+- **[QA](_template/agents/qa.md)**: Testing strategy, test coverage, quality assurance processes
+
+## Core Development Principles
+
+### 1. Interactive Development
+- Ask questions before making assumptions
+- Understand the "why" behind requirements
+- Discuss trade-offs and alternatives
+- Batch related questions together
+- Wait for responses before proceeding
+
+### 2. Security by Default
+- Every feature gets a security review
+- Never commit secrets or credentials (use environment variables)
+- Think like a pentester: "How could this be exploited?"
+- Consider both malicious users AND curious users
+- Validate all inputs, sanitize all outputs
+- Follow principle of least privilege
+
+### 3. Test-Driven Development
+- Write tests as you develop, not after
+- Test business logic independently from UI
+- Cover edge cases and error paths
+- Aim for meaningful coverage, not just high percentages
+- Integration tests for critical user flows
+
+### 4. Clean Architecture
+- Business logic separate from display logic
+- Single responsibility principle
+- Clear interfaces between layers
+- Dependency injection where appropriate
+- Make it work, make it right, make it fast (in that order)
+
+### 5. Documentation First
+- Document significant decisions in ADRs
+- Explain complex logic with comments (the "why", not the "what")
+- Keep README and setup docs current
+- Document API contracts
+- Update runbooks for operations
+
+### 6. Clean Codebase
+- Fix warnings, don't ignore them
+- Refactor as you go
+- Delete unused code
+- Leave code better than you found it
+- Consistent style throughout
+
+### 7. Performance Awareness
+- Profile before optimizing
+- Avoid N+1 queries
+- Use caching strategically
+- Consider batch operations
+- Monitor resource usage
+
+### 8. Accessibility & Inclusion
+- WCAG 2.1 AA compliance as default
+- Keyboard navigation support
+- Screen reader compatibility
+- Semantic HTML
+- Color contrast standards
+
+## Project-Specific Guidelines
+
+### [Add Your Custom Rules Here]
+
+Example:
+- Always use TypeScript strict mode
+- Mobile-first responsive design (breakpoints: 640px, 768px, 1024px, 1280px)
+- Dark mode support required for all new features
+- API responses must follow our standard envelope format
+- All database queries must have indexes planned
+
+### [Your Coding Patterns]
+
+Example:
+- Use custom hooks for reusable logic (React)
+- Service layer for all business logic
+- Repository pattern for database access
+- Feature flags for gradual rollouts
+
+### [Your Don'ts]
+
+Example:
+- Don't use `any` type in TypeScript
+- Don't fetch data in components (use hooks/context)
+- Don't bypass the ORM for raw SQL (except in migrations)
+- Don't inline styles (use CSS modules or Tailwind)
+
+## Environment Setup
+
+### Required Environment Variables
+
+**IMPORTANT**: All secrets and connection strings must be stored in `.env` (never commit this file!)
+
+```bash
+# Database Connection
+# ALWAYS use this environment variable - never hardcode connection strings
+DATABASE_URL=postgresql://user:password@host:5432/dbname
+
+# API Keys
+API_KEY=[your API key]
+JWT_SECRET=[your JWT secret]
+
+# See .env.example for complete list
+```
+
+**Agent Instructions**:
+- Always reference `DATABASE_URL` from environment variables
+- Never hardcode credentials or connection strings in code
+- Use `.env` for local development
+- Use platform-specific secrets management for production (AWS Secrets Manager, etc.)
+
+### Database Schema Reference
+
+**For agents**: To avoid syntax errors, always consult the schema before writing queries.
+
+- **Current schema**: See `project/architecture/database-schema.sql` (or .md if documented)
+- **Database type**: [e.g., PostgreSQL 15, MySQL 8, MongoDB 6]
+- **ORM/Query Builder**: [e.g., Prisma, TypeORM, SQLAlchemy, none]
+- **Migration tool**: [e.g., Flyway, Liquibase, Alembic, custom SQL files]
+
+**Database-Specific Conventions** (customize for your database):
+
+PostgreSQL Example:
+- Use parameterized queries: `$1, $2, $3` not string concatenation
+- JSONB for flexible metadata
+- Array syntax: `ARRAY['val1', 'val2']` not `['val1', 'val2']`
+- Always use `RETURNING` clause for INSERT/UPDATE when you need the result
+- Single quotes for strings, double quotes for identifiers
+
+**Migrations Location**: `[e.g., /migrations, /db/migrate, /prisma/migrations]`
+- Never modify existing migrations - always create new ones
+- Use sequential numbering: `001_initial.sql`, `002_add_users.sql`
+- Test migrations against copy of production data before deploying
+
+### Local Development
+```bash
+# Install dependencies
+[your install command]
+
+# Run database migrations
+[your migration command, e.g., npm run migrate]
+
+# Run development server
+[your dev command]
+
+# Run tests
+[your test command]
+
+# Run linter
+[your lint command]
+```
+
+### Scratch Work & Testing
+
+Use these directories for temporary work:
+- `/temp/` - Temporary files and quick experiments (gitignored)
+- `/scratch/` - Scratch work, throwaway code (gitignored)
+- Both directories are safe for agents to use without affecting the codebase
+
+## Deployment Process
+
+[Document your deployment workflow]
+
+Example:
+1. Merge to `main` triggers CI
+2. CI runs tests and builds
+3. Auto-deploy to staging
+4. Manual approval for production
+5. Blue-green deployment to production
+6. Smoke tests run automatically
+7. Monitor logs and metrics
+
+## Session Continuity
+
+To maintain context across development sessions:
+
+1. **Start of session**: Review this file and `project/features/backlog.md`
+2. **During session**: Update feature status in real-time
+3. **End of session**: Document decisions made, open questions, next steps
+4. **Context file**: Create `project/session-notes.md` for handoff notes
+
+## Common Tasks Quick Reference
+
+### Add a New Feature
+```bash
+# 1. Create feature branch
+git checkout -b feature/feature-name
+
+# 2. Document requirements
+mkdir -p .claude/project/features/feature-name
+vim .claude/project/features/feature-name/requirements.md
+
+# 3. If architecture decision needed, create ADR
+vim .claude/project/architecture/decisions/NNN-description.md
+
+# 4. Implement with TDD
+# 5. Run pre-commit checklist
+# 6. Create PR with pre-merge checklist completed
+```
+
+### Fix a Bug
+```bash
+# 1. Create hotfix branch
+git checkout -b hotfix/bug-name
+
+# 2. Write regression test first
+# 3. Fix the bug
+# 4. Verify test passes
+# 5. Run pre-commit checklist
+# 6. Create PR
+```
+
+### Make an Architecture Decision
+```bash
+# 1. Copy ADR template
+cp .claude/project/architecture/decisions/template.md \
+   .claude/project/architecture/decisions/NNN-title.md
+
+# 2. Fill out ADR (Context, Decision, Consequences, Alternatives)
+# 3. Discuss with team if needed
+# 4. Mark as "Accepted"
+# 5. Commit ADR
+```
+
+## Important Files & Locations
+
+- **Agent configurations**: `.claude/_template/agents/`
+- **Checklists**: `.claude/_template/checklists/`
+- **ADRs**: `.claude/project/architecture/decisions/`
+- **Database schema**: `.claude/project/architecture/database-schema.sql` (or .md)
+- **Feature specs**: `.claude/project/features/`
+- **Business context**: `.claude/project/business/`
+- **Standards**: `.claude/project/standards/`
+- **Security**: `.claude/project/security/`
+- **Migrations**: `[your migrations directory, e.g., /migrations, /db/migrate]`
+- **Scratch work**: `/temp/` and `/scratch/` (gitignored)
+
+## Team & Contacts
+
+- **Product Owner**: [Name/Contact]
+- **Tech Lead**: [Name/Contact]
+- **DevOps**: [Name/Contact]
+- **Security Contact**: [Name/Contact]
+
+## External Resources
+
+- **Production**: [URL]
+- **Staging**: [URL]
+- **CI/CD**: [URL]
+- **Monitoring**: [URL]
+- **Project Management**: [URL]
+- **Documentation**: [URL]
+
+---
+
+**Template Version:** See `TEMPLATE_VERSION.txt`
+
+**Last Updated:** [Date]
+
+**Updated By:** [Name]
