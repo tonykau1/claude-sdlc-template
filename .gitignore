@@ -28,3 +28,7 @@ yarn-error.log*
 *.temp
 temp/
 scratch/
+
+# Claude Code logs (YOLO mode activity tracking)
+.claude/logs/
+.claude/settings.local.json

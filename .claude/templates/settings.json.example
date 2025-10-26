@@ -1,0 +1,44 @@
+{
+  "description": "Example Claude Code settings with YOLO mode hooks",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "description": "Block destructive Bash commands automatically",
+        "match": "Bash",
+        "command": "bash -c 'COMMAND=$(echo \"$TOOL_INPUT\" | jq -r \".command\"); if echo \"$COMMAND\" | grep -qE \"(^|[;|&])\\s*(rm\\s+-rf|sudo|DROP\\s+TABLE|DELETE\\s+FROM|TRUNCATE|git\\s+reset\\s+--hard|git\\s+push.*--force)\"; then echo \"BLOCK: Destructive command requires manual approval. Command: $COMMAND\" >&2 && exit 1; fi'"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "description": "Log all Bash commands to activity log",
+        "match": "Bash",
+        "command": "bash -c 'mkdir -p .claude/logs && echo \"$(date \"+%Y-%m-%d %H:%M:%S\") [Bash] $(echo $TOOL_INPUT | jq -r .command)\" >> .claude/logs/activity.log'"
+      },
+      {
+        "description": "Log all file writes",
+        "match": "Write",
+        "command": "bash -c 'mkdir -p .claude/logs && echo \"$(date \"+%Y-%m-%d %H:%M:%S\") [Write] $(echo $TOOL_INPUT | jq -r .file_path)\" >> .claude/logs/activity.log'"
+      }
+    ],
+    "SessionStart": [
+      {
+        "description": "Log session start",
+        "match": "*",
+        "command": "bash -c 'mkdir -p .claude/logs && echo \"\\n=== Session started: $(date) ===\" >> .claude/logs/activity.log'"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "description": "Log session end and summary",
+        "match": "*",
+        "command": "bash -c 'mkdir -p .claude/logs && echo \"=== Session ended: $(date) ===\\n\" >> .claude/logs/activity.log'"
+      }
+    ]
+  },
+  "comments": {
+    "usage": "Copy this to .claude/settings.json in your project",
+    "customize": "Adjust the regex patterns in PreToolUse to match your security requirements",
+    "logging": "Logs are written to .claude/logs/activity.log (add to .gitignore)",
+    "security": "Review the security section in yolo-mode-setup.md before enabling"
+  }
+}

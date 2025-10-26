@@ -72,14 +72,59 @@ When you need focused expertise, reference these agents:
 - **[DevOps](_template/agents/devops.md)**: Infrastructure, deployment, monitoring, CI/CD pipelines
 - **[QA](_template/agents/qa.md)**: Testing strategy, test coverage, quality assurance processes
 
+## Agent Autonomy Settings
+
+**Choose your workflow mode** by uncommenting one of the options below:
+
+### Option 1: YOLO Mode (Autonomous) - RECOMMENDED FOR ACTIVE DEVELOPMENT
+
+**Enabled by default.** Work autonomously without asking for approval except for destructive operations.
+
+**✅ Auto-approved operations** (just do it, report results):
+- Create/edit files and directories
+- Install dependencies (npm, pip, cargo, etc.)
+- Run tests, linters, formatters
+- Run builds and dev servers
+- SELECT queries (read-only database)
+- Git add, commit, push to feature branches
+- Web research and documentation lookups
+- Start/stop development processes
+
+**❌ Requires explicit approval**:
+- Delete files/directories
+- INSERT/UPDATE/DELETE/DROP database operations (except test DB)
+- git push --force, git reset --hard
+- Push to main/master branch
+- System-level installs (sudo)
+- Production deployments
+
+**Workflow**: Just do the work, then report what you did. Don't ask "Should I...?" unless it's destructive.
+
+**See**: [YOLO Mode Setup Guide](_template/templates/yolo-mode-setup.md) for detailed configuration.
+
+### Option 2: Interactive Mode (Ask First)
+
+<!-- Uncomment this section and comment out YOLO mode if you prefer asking first:
+
+**Ask before every significant operation.**
+
+**Workflow**:
+1. Ask "Should I [action]?" before creating files, installing packages, running commands
+2. Wait for approval
+3. Execute after receiving permission
+
+This is the traditional, more cautious approach.
+
+-->
+
 ## Core Development Principles
 
 ### 1. Interactive Development
-- Ask questions before making assumptions
+- Ask questions when requirements are ambiguous
 - Understand the "why" behind requirements
 - Discuss trade-offs and alternatives
 - Batch related questions together
-- Wait for responses before proceeding
+- In YOLO mode: Ask about destructive operations only
 
 ### 2. Security by Default
 - Every feature gets a security review

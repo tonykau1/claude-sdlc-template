@@ -9,6 +9,8 @@ A comprehensive, best-practice template for software development with AI agents 
 - **Documentation Templates**: ADRs, feature specs, security reviews, and more
 - **Best Practice Workflows**: TDD, security reviews, performance optimization, accessibility
 - **Scalable Structure**: Clear separation between universal patterns and project-specific details
+- **YOLO Mode**: Autonomous workflow configuration for faster development with safety guardrails
+- **Database Patterns**: Schema documentation, migrations, and syntax guides for common databases
 
 ## Quick Start
 

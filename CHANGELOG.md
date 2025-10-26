@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **YOLO Mode**: Autonomous workflow configuration with safety guardrails
+  - Comprehensive setup guide at `.claude/templates/yolo-mode-setup.md`
+  - Example hooks configuration in `.claude/templates/settings.json.example`
+  - Auto-blocks destructive commands (rm -rf, DROP TABLE, git reset --hard, etc.)
+  - Activity logging for audit trails
+  - Configurable permission levels for different project types
+- **Agent Autonomy Settings** section in claude.md.template
+  - YOLO Mode (autonomous) enabled by default
+  - Interactive Mode (ask first) as optional alternative
+  - Clear list of auto-approved vs. requires-permission operations
 - Database schema documentation template with PostgreSQL/MySQL/MongoDB examples
 - Database migration examples (001-003) demonstrating best practices
 - Environment variables section in claude.md.template with agent instructions
@@ -22,7 +32,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced claude.md.template with "Database Schema Reference" section
 - Updated "Environment Setup" section with explicit agent instructions
 - Expanded "Important Files & Locations" to include database schema and scratch directories
-- Improved .gitignore to include temp/ and scratch/ directories
+- Improved .gitignore to include temp/, scratch/, .claude/logs/, and .claude/settings.local.json
+- Updated README with YOLO Mode and Database Patterns features
+- Modified "Interactive Development" principle to account for YOLO mode workflow
 
 ## [0.1.0] - 2025-10-25
 
