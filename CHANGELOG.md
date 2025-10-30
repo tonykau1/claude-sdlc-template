@@ -71,6 +71,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Production-ready `settings.local.json.example`
   - Complete usage examples for features, bugs, and multi-agent tasks
   - Best practices for scope management and review
+- **Migration Guide** (`docs/MIGRATION-GUIDE.md`):
+  - Comprehensive guide for integrating template into existing projects
+  - Safe preservation of business logic from existing agents
+  - Side-by-side installation (template + existing config)
+  - Business logic extraction patterns
+  - Gradual adoption strategy
+  - Common migration scenarios and troubleshooting
+  - Before/after examples
 
 ### Previous Additions
 - **YOLO Mode**: Autonomous workflow configuration with safety guardrails

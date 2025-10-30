@@ -72,6 +72,16 @@ cd my-new-project
 
 ### For Existing Projects
 
+**If you already have `.claude/` configuration with custom agents:**
+
+See the comprehensive [Migration Guide](docs/MIGRATION-GUIDE.md) - it shows how to:
+- Safely preserve your business logic
+- Install template alongside existing config
+- Extract domain knowledge to organized structure
+- Gradually adopt template features
+
+**For projects without existing `.claude/`:**
+
 ```bash
 # In your existing project directory
 git subtree add --prefix .claude/_template \
@@ -140,6 +150,7 @@ This template assumes you want to build production-quality software, not throwaw
 - [QUICKSTART.md](QUICKSTART.md) - Complete overview of features
 - [QUICKSTART-PLAN-EXECUTE.md](.claude/templates/QUICKSTART-PLAN-EXECUTE.md) - 30-second autonomous setup
 - [Setup Guide](docs/SETUP.md) - Detailed setup instructions
+- [Migration Guide](docs/MIGRATION-GUIDE.md) - Integrating into existing projects with .claude config
 
 ### Workflows & Standards
 - [Plan-Then-Execute Workflow](.claude/templates/plan-then-execute-workflow.md) - Autonomous development guide
