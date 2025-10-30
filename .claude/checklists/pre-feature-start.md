@@ -27,6 +27,18 @@ Use this checklist before starting any new feature to ensure proper planning and
 
 ## 🏗️ Architecture & Design
 
+- [ ] **Existing codebase reviewed**
+  - ALL relevant files read completely?
+  - Current patterns and conventions understood?
+  - Similar features reviewed for consistency?
+  - File sizes audited (identify files >150 LOC)?
+
+- [ ] **File size planning**
+  - New files designed to stay under 200 LOC target?
+  - Large existing files identified for refactoring?
+  - Modular design planned to maintain size limits?
+  - See [File Size Discipline](../_template/templates/standards/file-size-discipline.md)
+
 - [ ] **Impact assessment completed**
   - Which components/services affected?
   - Database changes needed?
@@ -179,7 +191,15 @@ If any of these are true, **STOP** and clarify before proceeding:
 After completing this checklist:
 
 1. Create feature documentation in `.claude/project/features/[feature-name]/`
-2. Start with tests (TDD approach)
-3. Implement incrementally
-4. Commit frequently with clear messages
-5. Review your own code before pushing
+2. Consider using [Orchestrator Agent](../_template/agents/orchestrator.md) for complex features
+3. Start with tests (TDD approach)
+4. Implement incrementally with file size discipline
+5. Commit frequently with clear messages
+6. Review your own code before pushing
+
+## Related Resources
+
+- [Orchestrator Agent](../_template/agents/orchestrator.md) - For complex multi-domain features
+- [Architect Agent](../_template/agents/architect.md) - For design decisions
+- [Completion Report Template](../_template/templates/completion-report-template.md)
+- [File Size Discipline](../_template/templates/standards/file-size-discipline.md)

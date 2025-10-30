@@ -4,6 +4,12 @@ Run through this checklist before every commit to maintain code quality and avoi
 
 ## 🧹 Code Quality
 
+- [ ] **File size limits maintained**
+  - All modified files under 250 LOC maximum?
+  - Files >180 LOC flagged for refactoring?
+  - New files designed to stay within limits?
+  - See [File Size Discipline](../_template/templates/standards/file-size-discipline.md)
+
 - [ ] **Code runs without errors**
   - Application starts successfully?
   - No compilation errors?
@@ -242,6 +248,18 @@ updated files
 final version
 ```
 
+## 📊 Evidence & Documentation
+
+- [ ] **Evidence of verification**
+  - Functionality tested and working?
+  - Test output or screenshots available?
+  - Integration points verified?
+
+- [ ] **File sizes documented**
+  - LOC counts recorded for modified files?
+  - Any files approaching limits flagged?
+  - Refactoring needs noted?
+
 ## Next Steps
 
 After committing:
@@ -249,3 +267,9 @@ After committing:
 2. Keep commits small and frequent
 3. Prepare for PR review (see pre-merge checklist)
 4. Continue with next task or feature
+
+## Related Resources
+
+- [Completion Report Template](../_template/templates/completion-report-template.md)
+- [File Size Discipline](../_template/templates/standards/file-size-discipline.md)
+- [Pre-Merge Checklist](pre-merge.md) - For PR preparation

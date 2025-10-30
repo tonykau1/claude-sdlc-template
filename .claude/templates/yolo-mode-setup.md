@@ -292,11 +292,139 @@ Edit the "Agent Autonomy Settings" section in `.claude/claude.md` to match your 
 
 ---
 
+## Advanced: Granular Permissions with settings.local.json
+
+For fine-grained control over specific commands, create `.claude/settings.local.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm test:*)",
+      "Bash(curl:*)",
+      "Bash(mkdir:*)",
+      "Bash(psql:*)",
+      "Bash(node scripts/*)",
+      "Write(*)",
+      "Read(*)",
+      "Edit(*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(DROP:*)",
+      "Bash(git push --force:*)",
+      "Bash(kubectl delete:*)"
+    ],
+    "ask": [
+      "Bash(git push origin main:*)",
+      "Bash(npm publish:*)",
+      "Bash(terraform apply:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "enableAllProjectMcpServers": true
+}
+```
+
+### Permission Patterns Explained
+
+**Wildcard Patterns**:
+- `Bash(npm run test:*)` - Allow all npm test commands
+- `Bash(psql:*)` - Allow any psql command
+- `Write(*)` - Allow writing any file
+
+**Specific Commands**:
+- `Bash(mkdir:*)` - Allow directory creation
+- `Bash(curl:*)` - Allow API calls
+- `Bash(node scripts/*)` - Allow running scripts in scripts/ folder
+
+**Safety Denials**:
+- `Bash(rm -rf:*)` - Block dangerous deletions
+- `Bash(DROP:*)` - Block SQL DROP statements
+- `Bash(git push --force:*)` - Block force pushes
+
+### Common Permission Sets
+
+#### For Web Development Projects
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(npx:*)",
+      "Bash(curl:*)",
+      "Bash(mkdir:*)",
+      "Write(src/**)",
+      "Write(tests/**)",
+      "Edit(src/**)",
+      "Edit(tests/**)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Write(.env)",
+      "Write(package-lock.json)"
+    ]
+  }
+}
+```
+
+#### For Data Science Projects
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(jupyter:*)",
+      "Bash(pandas:*)",
+      "Write(notebooks/**)",
+      "Write(data/processed/**)",
+      "Read(data/**)"
+    ],
+    "deny": [
+      "Write(data/raw/**)",
+      "Bash(rm:*)"
+    ]
+  }
+}
+```
+
+#### For Infrastructure Projects
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(terraform plan:*)",
+      "Bash(kubectl get:*)",
+      "Bash(kubectl describe:*)",
+      "Bash(docker build:*)",
+      "Bash(docker run:*)"
+    ],
+    "ask": [
+      "Bash(terraform apply:*)",
+      "Bash(kubectl apply:*)",
+      "Bash(kubectl delete:*)"
+    ],
+    "deny": [
+      "Bash(kubectl delete namespace:*)"
+    ]
+  }
+}
+```
+
+**Important**: Add `.claude/settings.local.json` to your `.gitignore` to keep personal settings local.
+
+---
+
 ## Monitoring & Logging
 
 ### Track Claude's Actions
 
-Create `.claude/settings.json`:
+Create `.claude/settings.json` (or add to settings.local.json):
 
 ```json
 {

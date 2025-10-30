@@ -4,13 +4,27 @@ A comprehensive, best-practice template for software development with AI agents 
 
 ## What This Provides
 
-- **Specialized AI Agents**: Pre-configured agent roles for architecture, security, frontend, backend, DevOps, and QA
+### Core Framework
+- **7 Specialized AI Agents**: Architect, Security, Backend, Frontend, DevOps, QA, and Orchestrator
 - **Development Checklists**: Step-by-step validation for features, commits, merges, and deployments
-- **Documentation Templates**: ADRs, feature specs, security reviews, and more
+- **Documentation Templates**: ADRs, feature specs, security reviews, completion reports, and more
 - **Best Practice Workflows**: TDD, security reviews, performance optimization, accessibility
 - **Scalable Structure**: Clear separation between universal patterns and project-specific details
+
+### Quality & Maintainability
+- **File Size Discipline**: Comprehensive standards for maintainable code (200 LOC target, 250 LOC max)
+- **Evidence-Based Completion**: Mandatory verification with proof before marking tasks complete
+- **Reading Protocols**: Prevent LLM assumptions by requiring thorough code analysis
+- **Completion Report Templates**: Standardized format for documenting task completion with evidence
+
+### Autonomous Development
 - **YOLO Mode**: Autonomous workflow configuration for faster development with safety guardrails
+- **Orchestrator Agent**: Coordinate multiple specialized agents for complex multi-domain tasks
+- **Granular Permissions**: Fine-grained control over autonomous operations
+
+### Additional Resources
 - **Database Patterns**: Schema documentation, migrations, and syntax guides for common databases
+- **Agent Template**: Create custom domain-specific agents for your project needs
 
 ## Quick Start
 
@@ -47,8 +61,26 @@ cp .claude/_template/templates/claude.md.template .claude/claude.md
 ```
 .claude/
 ├── agents/              # Specialized AI agent configurations
+│   ├── orchestrator.md  # Multi-agent coordinator
+│   ├── architect.md     # System design & architecture
+│   ├── security.md      # Security reviews & threat modeling
+│   ├── backend.md       # API design & business logic
+│   ├── frontend.md      # UI/UX & accessibility
+│   ├── devops.md        # Infrastructure & deployment
+│   └── qa.md            # Testing & quality gates
 ├── checklists/          # Validation checklists for different stages
+│   ├── pre-feature-start.md
+│   ├── pre-commit.md
+│   ├── pre-merge.md
+│   ├── security-review.md
+│   └── go-live.md
 └── templates/           # Reusable document templates
+    ├── claude.md.template
+    ├── adr-template.md
+    ├── completion-report-template.md
+    ├── agent-template.md
+    └── standards/
+        └── file-size-discipline.md
 ```
 
 ## Keeping Templates Updated
@@ -65,11 +97,14 @@ cp .claude/_template/templates/claude.md.template .claude/claude.md
 
 This template assumes you want to build production-quality software, not throwaway prototypes. It emphasizes:
 
+- **Evidence-Based Completion**: Tasks are only done when proven to work with evidence
+- **Maintainability Through Discipline**: File size limits and modular design keep code manageable
 - **Interactive Development**: Ask questions, understand requirements before coding
 - **Security by Default**: Every feature gets a security review
 - **Test-Driven**: Write tests as you develop, not after
 - **Documented Decisions**: ADRs capture the "why" behind choices
 - **Continuous Learning**: Document patterns and anti-patterns as you discover them
+- **LLM Awareness**: Reading protocols prevent assumptions and hallucinations
 
 ## Documentation
 
