@@ -1,14 +1,11 @@
 {
   "permissions": {
     "allow": [
-      // File operations - unrestricted
       "Read(*)",
       "Write(*)",
       "Edit(*)",
       "Glob(*)",
       "Grep(*)",
-
-      // Development commands
       "Bash(npm:*)",
       "Bash(yarn:*)",
       "Bash(pnpm:*)",
@@ -19,8 +16,6 @@
       "Bash(pytest:*)",
       "Bash(cargo:*)",
       "Bash(go:*)",
-
-      // Testing commands
       "Bash(npm test:*)",
       "Bash(npm run test:*)",
       "Bash(jest:*)",
@@ -28,26 +23,18 @@
       "Bash(mocha:*)",
       "Bash(playwright:*)",
       "Bash(cypress:*)",
-
-      // Build commands
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
       "Bash(make:*)",
-
-      // Database read operations
       "Bash(psql:*)",
       "Bash(mysql:*)",
       "Bash(mongo:*)",
       "Bash(redis-cli GET:*)",
       "Bash(sqlite3:*)",
-
-      // Database write operations (development/test only)
       "Bash(psql -d test_db:*)",
       "Bash(psql -d dev_db:*)",
       "Bash(npm run db:migrate:*)",
       "Bash(npm run db:seed:*)",
-
-      // Git operations (safe)
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
@@ -57,8 +44,6 @@
       "Bash(git push origin bugfix/*)",
       "Bash(git checkout -b:*)",
       "Bash(git branch:*)",
-
-      // Utility commands
       "Bash(curl:*)",
       "Bash(wget:*)",
       "Bash(mkdir:*)",
@@ -76,41 +61,29 @@
       "Bash(head:*)",
       "Bash(tail:*)",
       "Bash(echo:*)",
-
-      // Process management
       "Bash(pkill:*)",
       "Bash(killall:*)",
       "Bash(ps:*)",
-
-      // Linting and formatting
       "Bash(eslint:*)",
       "Bash(prettier:*)",
       "Bash(black:*)",
       "Bash(rustfmt:*)",
       "Bash(go fmt:*)",
-
-      // Security scanning
       "Bash(npm audit:*)",
       "Bash(pip-audit:*)",
       "Bash(trivy:*)",
-
-      // Custom project scripts
       "Bash(node scripts/*)",
       "Bash(python scripts/*)",
       "Bash(bash scripts/*)",
       "Bash(./scripts/*)"
     ],
-
     "deny": [
-      // Destructive file operations
       "Bash(rm -rf /*)",
       "Bash(rm -rf ~:*)",
       "Bash(rm -rf .:*)",
       "Write(.env)",
       "Write(.env.production)",
       "Write(.env.local)",
-
-      // Dangerous database operations
       "Bash(*DROP DATABASE*)",
       "Bash(*DROP TABLE*)",
       "Bash(*TRUNCATE*)",
@@ -118,22 +91,16 @@
       "Bash(psql -d production:*)",
       "Bash(psql -d prod:*)",
       "Bash(mysql -h prod:*)",
-
-      // Dangerous git operations
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
       "Bash(git reset --hard:*)",
       "Bash(git push origin main:*)",
       "Bash(git push origin master:*)",
       "Bash(git push origin develop:*)",
-
-      // System operations
       "Bash(sudo:*)",
       "Bash(su:*)",
       "Bash(chmod 777:*)",
       "Bash(chown:*)",
-
-      // Production deployments
       "Bash(kubectl apply:*)",
       "Bash(kubectl delete:*)",
       "Bash(terraform apply:*)",
@@ -142,24 +109,16 @@
       "Bash(npm publish:*)",
       "Bash(cargo publish:*)"
     ],
-
     "ask": [
-      // Ask before pushing to shared branches
       "Bash(git push origin staging:*)",
-
-      // Ask before installing new dependencies
       "Bash(npm install:*)",
       "Bash(pip install:*)",
       "Bash(cargo add:*)",
-
-      // Ask before database migrations on shared DBs
       "Bash(npm run db:migrate:dev)",
       "Bash(psql -d shared_dev:*)"
     ],
-
     "defaultMode": "accept"
   },
-
   "hooks": {
     "onToolUse": {
       "enabled": false,
@@ -170,9 +129,7 @@
       "command": ""
     }
   },
-
   "enableAllProjectMcpServers": true,
-
   "additionalDirectories": [
     "/Users/admin/.claude"
   ]
