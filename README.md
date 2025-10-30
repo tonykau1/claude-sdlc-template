@@ -18,6 +18,10 @@ A comprehensive, best-practice template for software development with AI agents 
 - **Completion Report Templates**: Standardized format for documenting task completion with evidence
 
 ### Autonomous Development
+- **Plan-Then-Execute Workflow**: Interactive planning → Approval → Autonomous execution → Delivery
+  - No interruptions during execution phase
+  - Full file/test/database permissions with safety guardrails
+  - 30-second setup with `settings.local.json.example`
 - **YOLO Mode**: Autonomous workflow configuration for faster development with safety guardrails
 - **Orchestrator Agent**: Coordinate multiple specialized agents for complex multi-domain tasks
 - **Granular Permissions**: Fine-grained control over autonomous operations
@@ -27,6 +31,30 @@ A comprehensive, best-practice template for software development with AI agents 
 - **Agent Template**: Create custom domain-specific agents for your project needs
 
 ## Quick Start
+
+### Fast Track: Plan-Then-Execute Mode (Recommended)
+
+**Get maximum velocity with autonomous agents in 30 seconds:**
+
+```bash
+# 1. Clone or add template to your project
+git clone https://github.com/yourorg/claude-sdlc-template.git
+
+# 2. Copy autonomous settings
+cp .claude/_template/templates/settings.local.json.example .claude/settings.local.json
+
+# 3. Add to your .claude/claude.md:
+## Development Mode: Plan-Then-Execute
+Work autonomously after plan approval - no interruptions!
+
+# 4. Start building
+# You: "Build user authentication"
+# Agent: [Plans everything]
+# You: "Approved"
+# Agent: [Builds completely without asking]
+```
+
+See: [QUICKSTART-PLAN-EXECUTE.md](.claude/templates/QUICKSTART-PLAN-EXECUTE.md)
 
 ### For New Projects
 
@@ -108,8 +136,23 @@ This template assumes you want to build production-quality software, not throwaw
 
 ## Documentation
 
+### Getting Started
+- [QUICKSTART.md](QUICKSTART.md) - Complete overview of features
+- [QUICKSTART-PLAN-EXECUTE.md](.claude/templates/QUICKSTART-PLAN-EXECUTE.md) - 30-second autonomous setup
 - [Setup Guide](docs/SETUP.md) - Detailed setup instructions
+
+### Workflows & Standards
+- [Plan-Then-Execute Workflow](.claude/templates/plan-then-execute-workflow.md) - Autonomous development guide
+- [File Size Discipline](.claude/templates/standards/file-size-discipline.md) - Code maintainability standards
+- [Completion Report Template](.claude/templates/completion-report-template.md) - Evidence-based verification
+
+### Configuration
+- [YOLO Mode Setup](.claude/templates/yolo-mode-setup.md) - Autonomous workflow configuration
+- [settings.local.json.example](.claude/templates/settings.local.json.example) - Permissions configuration
+
+### Reference
 - [CHANGELOG](CHANGELOG.md) - Version history and updates
+- [Contributing Guide](docs/CONTRIBUTING.md) - How to contribute improvements
 
 ## Contributing
 
@@ -121,4 +164,4 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ## Version
 
-Current version: 0.1.0
+Current version: 0.2.0
