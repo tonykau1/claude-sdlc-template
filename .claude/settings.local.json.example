@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "Task(*)",
+      "TodoWrite(*)",
+      "NotebookEdit(*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~/*)",
+      "Bash(rm -rf ./*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git push origin main:*)",
+      "Bash(git push origin master:*)",
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(chmod 777:*)",
+      "Bash(chown:*)",
+      "Bash(*DROP DATABASE*)",
+      "Bash(*DROP TABLE*)",
+      "Bash(*DELETE FROM*)",
+      "Bash(*TRUNCATE*)",
+      "Write(.env)",
+      "Write(.env.production)",
+      "Write(.env.local)"
+    ],
+    "defaultMode": "accept"
+  }
+}
