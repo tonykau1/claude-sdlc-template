@@ -32,3 +32,11 @@ scratch/
 # Claude Code logs (YOLO mode activity tracking)
 .claude/logs/
 .claude/settings.local.json
+
+# Claude Code hooks dependencies
+.claude/hooks/node_modules/
+.claude/hooks/package-lock.json
+
+# Temporary showcase download
+*.zip
+claude-code-infrastructure-showcase-main/

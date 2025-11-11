@@ -6,6 +6,8 @@ A comprehensive, best-practice template for software development with AI agents 
 
 ### Core Framework
 - **7 Specialized AI Agents**: Architect, Security, Backend, Frontend, DevOps, QA, and Orchestrator
+- **Auto-Activating Skills**: Context-aware guidance that activates automatically when relevant
+- **Hook System**: UserPromptSubmit and PostToolUse hooks for intelligent workflow automation
 - **Development Checklists**: Step-by-step validation for features, commits, merges, and deployments
 - **Documentation Templates**: ADRs, feature specs, security reviews, completion reports, and more
 - **Best Practice Workflows**: TDD, security reviews, performance optimization, accessibility
@@ -22,6 +24,10 @@ A comprehensive, best-practice template for software development with AI agents 
   - No interruptions during execution phase
   - Full file/test/database permissions with safety guardrails
   - 30-second setup with `settings.local.json.example`
+- **Auto-Activation System**: Skills suggest themselves based on context
+  - File patterns trigger relevant guidance
+  - Keywords activate domain expertise
+  - Zero-friction knowledge access
 - **YOLO Mode**: Autonomous workflow configuration for faster development with safety guardrails
 - **Orchestrator Agent**: Coordinate multiple specialized agents for complex multi-domain tasks
 - **Granular Permissions**: Fine-grained control over autonomous operations
@@ -32,16 +38,20 @@ A comprehensive, best-practice template for software development with AI agents 
 
 ## Quick Start
 
-### Fast Track: Plan-Then-Execute Mode (Recommended)
+### Fast Track: Copy & Go (30 seconds)
 
-**Get maximum velocity with autonomous agents in 30 seconds:**
+**Everything you need is in the `.claude/` directory:**
 
 ```bash
-# 1. Clone or add template to your project
-git clone https://github.com/yourorg/claude-sdlc-template.git
+# 1. Copy .claude/ to your project
+cp -r /path/to/template/.claude /path/to/your-project/
 
-# 2. Copy autonomous settings
-cp .claude/_template/templates/settings.local.json.example .claude/settings.local.json
+# 2. Install hook dependencies (enables auto-activation)
+cd /path/to/your-project/.claude/hooks
+npm install
+
+# 3. Set up local settings
+cp .claude/settings.local.json.example .claude/settings.local.json
 
 # 3. Add to your .claude/claude.md:
 ## Development Mode: Plan-Then-Execute
@@ -74,7 +84,7 @@ cd my-new-project
 
 **If you already have `.claude/` configuration with custom agents:**
 
-See the comprehensive [Migration Guide](docs/MIGRATION-GUIDE.md) - it shows how to:
+See the comprehensive [Migration Guide](.claude/docs/MIGRATION-GUIDE.md) - it shows how to:
 - Safely preserve your business logic
 - Install template alongside existing config
 - Extract domain knowledge to organized structure
@@ -106,6 +116,15 @@ cp .claude/_template/templates/claude.md.template .claude/claude.md
 │   ├── frontend.md      # UI/UX & accessibility
 │   ├── devops.md        # Infrastructure & deployment
 │   └── qa.md            # Testing & quality gates
+├── skills/              # Auto-activating domain guidance
+│   ├── skill-developer/ # Meta-skill for creating skills
+│   ├── sdlc-practices/  # SDLC best practices & quality gates
+│   └── README.md        # Skills documentation
+├── hooks/               # Workflow automation hooks
+│   ├── UserPromptSubmit-skill-activation.sh
+│   ├── PostToolUse-tracker.sh
+│   ├── skill-rules.json # Activation configuration
+│   └── README.md        # Hooks documentation
 ├── checklists/          # Validation checklists for different stages
 │   ├── pre-feature-start.md
 │   ├── pre-commit.md
@@ -136,6 +155,7 @@ cp .claude/_template/templates/claude.md.template .claude/claude.md
 This template assumes you want to build production-quality software, not throwaway prototypes. It emphasizes:
 
 - **Evidence-Based Completion**: Tasks are only done when proven to work with evidence
+- **Context-Aware Guidance**: Skills activate automatically when relevant, no manual invocation needed
 - **Maintainability Through Discipline**: File size limits and modular design keep code manageable
 - **Interactive Development**: Ask questions, understand requirements before coding
 - **Security by Default**: Every feature gets a security review
@@ -143,14 +163,21 @@ This template assumes you want to build production-quality software, not throwaw
 - **Documented Decisions**: ADRs capture the "why" behind choices
 - **Continuous Learning**: Document patterns and anti-patterns as you discover them
 - **LLM Awareness**: Reading protocols prevent assumptions and hallucinations
+- **Progressive Disclosure**: Keep context manageable with the 500-line rule
 
 ## Documentation
 
 ### Getting Started
 - [QUICKSTART.md](QUICKSTART.md) - Complete overview of features
 - [QUICKSTART-PLAN-EXECUTE.md](.claude/templates/QUICKSTART-PLAN-EXECUTE.md) - 30-second autonomous setup
-- [Setup Guide](docs/SETUP.md) - Detailed setup instructions
-- [Migration Guide](docs/MIGRATION-GUIDE.md) - Integrating into existing projects with .claude config
+- [Setup Guide](.claude/docs/SETUP.md) - Detailed setup instructions
+- [Migration Guide](.claude/docs/MIGRATION-GUIDE.md) - Integrating into existing projects with .claude config
+- [Claude Integration Guide](CLAUDE_INTEGRATION_GUIDE.md) - For AI agents helping users integrate
+
+### Skills & Hooks
+- [Skills README](.claude/skills/README.md) - Auto-activating skills documentation
+- [Hooks README](.claude/hooks/README.md) - Hook system and configuration
+- [skill-developer](.claude/skills/skill-developer/SKILL.md) - Guide to creating custom skills
 
 ### Workflows & Standards
 - [Plan-Then-Execute Workflow](.claude/templates/plan-then-execute-workflow.md) - Autonomous development guide
@@ -163,11 +190,11 @@ This template assumes you want to build production-quality software, not throwaw
 
 ### Reference
 - [CHANGELOG](CHANGELOG.md) - Version history and updates
-- [Contributing Guide](docs/CONTRIBUTING.md) - How to contribute improvements
+- [Contributing Guide](.claude/docs/CONTRIBUTING.md) - How to contribute improvements
 
 ## Contributing
 
-Improvements welcome! See [Contributing Guide](docs/CONTRIBUTING.md)
+Improvements welcome! See [Contributing Guide](.claude/docs/CONTRIBUTING.md)
 
 ## License
 

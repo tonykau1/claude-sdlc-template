@@ -1,0 +1,28 @@
+{
+  "name": "claude-code-hooks",
+  "version": "1.0.0",
+  "description": "TypeScript hooks for Claude Code skill auto-activation and automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "dependencies": {
+    "tsx": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "claude-code",
+    "hooks",
+    "automation",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT"
+}

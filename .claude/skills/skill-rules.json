@@ -1,0 +1,330 @@
+{
+  "version": "1.0",
+  "description": "Skill activation triggers for Claude Code. Controls when skills automatically suggest or block actions.",
+  "skills": {
+    "skill-developer": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "Meta-skill for creating and managing Claude Code skills",
+      "promptTriggers": {
+        "keywords": [
+          "skill system",
+          "create skill",
+          "add skill",
+          "skill triggers",
+          "skill rules",
+          "hook system",
+          "skill development",
+          "skill-rules.json",
+          "new skill"
+        ],
+        "intentPatterns": [
+          "(how do|how does|explain).*?skill",
+          "(create|add|modify|build).*?skill",
+          "skill.*?(work|trigger|activate|system)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          ".claude/skills/**/*.md",
+          ".claude/skills/**SKILL.md"
+        ],
+        "contentPatterns": [
+          "## Activation Configuration",
+          "promptTriggers"
+        ]
+      }
+    },
+    "sdlc-practices": {
+      "type": "guardrail",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "SDLC best practices including checklists, quality gates, and evidence-based completion",
+      "promptTriggers": {
+        "keywords": [
+          "new feature",
+          "implement feature",
+          "build feature",
+          "development workflow",
+          "pre-commit",
+          "testing strategy",
+          "quality gate",
+          "checklist",
+          "completion report",
+          "evidence",
+          "TDD",
+          "test-driven"
+        ],
+        "intentPatterns": [
+          "(create|add|implement|build).*?(feature|functionality)",
+          "(how to|best practice).*?(develop|implement|build)",
+          "(quality|testing|verification).*?(process|workflow|practice)",
+          "(before|after).*(commit|merge|deploy)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/*.ts",
+          "**/*.tsx",
+          "**/*.js",
+          "**/*.jsx",
+          "**/*.py",
+          "**/*.go",
+          "**/*.java",
+          "**/*.rb",
+          "**/*.php",
+          "**/*.cs"
+        ],
+        "pathExclusions": [
+          "**/*.test.*",
+          "**/*.spec.*",
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**",
+          "**/.next/**"
+        ],
+        "contentPatterns": [
+          "TODO:",
+          "FIXME:",
+          "function ",
+          "class ",
+          "export ",
+          "import "
+        ]
+      }
+    },
+    "backend-dev-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "Backend development patterns and best practices",
+      "promptTriggers": {
+        "keywords": [
+          "backend",
+          "API",
+          "endpoint",
+          "route",
+          "controller",
+          "service",
+          "repository",
+          "middleware",
+          "database",
+          "REST",
+          "GraphQL",
+          "microservice"
+        ],
+        "intentPatterns": [
+          "(create|add|implement|build).*?(API|endpoint|route|controller|service)",
+          "(fix|debug|handle).*?(backend|API|endpoint)",
+          "(add|implement).*?(middleware|validation|authentication)",
+          "(organize|structure|refactor).*?(backend|service|API)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "backend/**/*.ts",
+          "backend/**/*.js",
+          "api/**/*.ts",
+          "api/**/*.js",
+          "server/**/*.ts",
+          "server/**/*.js",
+          "src/api/**/*.ts",
+          "src/routes/**/*.ts",
+          "src/controllers/**/*.ts",
+          "src/services/**/*.ts",
+          "src/middleware/**/*.ts"
+        ],
+        "pathExclusions": [
+          "**/*.test.*",
+          "**/*.spec.*"
+        ],
+        "contentPatterns": [
+          "router\\.",
+          "app\\.(get|post|put|delete|patch)",
+          "export.*Controller",
+          "export.*Service",
+          "express\\(",
+          "@Controller",
+          "@Service"
+        ]
+      }
+    },
+    "frontend-dev-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "Frontend development patterns including React, Vue, Angular best practices",
+      "promptTriggers": {
+        "keywords": [
+          "component",
+          "react component",
+          "UI",
+          "interface",
+          "page",
+          "modal",
+          "dialog",
+          "form",
+          "frontend",
+          "React",
+          "Vue",
+          "Angular",
+          "styling",
+          "responsive"
+        ],
+        "intentPatterns": [
+          "(create|add|make|build).*?(component|UI|page|modal|dialog|form)",
+          "(style|design|layout).*?(component|UI|page)",
+          "(refactor|improve).*?(component|UI|frontend)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "frontend/src/**/*.tsx",
+          "frontend/src/**/*.jsx",
+          "client/src/**/*.tsx",
+          "client/src/**/*.jsx",
+          "src/components/**/*.tsx",
+          "src/components/**/*.jsx",
+          "src/pages/**/*.tsx",
+          "src/pages/**/*.jsx",
+          "app/**/*.tsx",
+          "app/**/*.jsx"
+        ],
+        "pathExclusions": [
+          "**/*.test.*",
+          "**/*.spec.*",
+          "**/*.stories.*"
+        ],
+        "contentPatterns": [
+          "import React",
+          "export.*Component",
+          "useState",
+          "useEffect",
+          "return \\(",
+          "<div",
+          "className="
+        ]
+      }
+    },
+    "security-review": {
+      "type": "guardrail",
+      "enforcement": "warn",
+      "priority": "critical",
+      "description": "Security best practices and vulnerability prevention",
+      "promptTriggers": {
+        "keywords": [
+          "authentication",
+          "authorization",
+          "password",
+          "token",
+          "JWT",
+          "security",
+          "encrypt",
+          "hash",
+          "SQL injection",
+          "XSS",
+          "CSRF",
+          "sensitive data",
+          "API key",
+          "secret"
+        ],
+        "intentPatterns": [
+          "(add|implement|create).*?(auth|authentication|authorization)",
+          "(store|save|handle).*?(password|token|secret|key)",
+          "(prevent|fix|secure).*?(injection|XSS|CSRF|vulnerability)",
+          "security.*?(review|check|audit)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/auth/**/*.ts",
+          "**/authentication/**/*.ts",
+          "**/middleware/auth*.ts",
+          "**/*Auth*.ts",
+          "**/*Security*.ts"
+        ],
+        "contentPatterns": [
+          "password",
+          "JWT",
+          "bcrypt",
+          "crypto",
+          "encrypt",
+          "hash",
+          "authenticate",
+          "authorize"
+        ]
+      }
+    },
+    "testing-strategy": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "Testing best practices including unit, integration, and E2E testing",
+      "promptTriggers": {
+        "keywords": [
+          "test",
+          "testing",
+          "unit test",
+          "integration test",
+          "e2e test",
+          "test coverage",
+          "Jest",
+          "Vitest",
+          "Cypress",
+          "Playwright",
+          "mock",
+          "stub"
+        ],
+        "intentPatterns": [
+          "(write|create|add).*?test",
+          "(test|verify|validate).*?(functionality|feature|component)",
+          "(improve|increase).*?(coverage|testing)",
+          "how.*?test"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/*.spec.ts",
+          "**/*.spec.tsx",
+          "**/__tests__/**/*.ts",
+          "**/__tests__/**/*.tsx"
+        ],
+        "contentPatterns": [
+          "describe\\(",
+          "it\\(",
+          "test\\(",
+          "expect\\(",
+          "beforeEach",
+          "afterEach"
+        ]
+      }
+    }
+  },
+  "notes": {
+    "enforcement_types": {
+      "suggest": "Skill suggestion appears but doesn't block execution",
+      "block": "Requires skill to be used before proceeding (guardrail)",
+      "warn": "Shows warning but allows proceeding"
+    },
+    "priority_levels": {
+      "critical": "Highest - Always trigger when matched",
+      "high": "Important - Trigger for most matches",
+      "medium": "Moderate - Trigger for clear matches",
+      "low": "Optional - Trigger only for explicit matches"
+    },
+    "customization": {
+      "pathPatterns": "Adjust to match your project structure",
+      "keywords": "Add domain-specific terms relevant to your project",
+      "intentPatterns": "Use regex for flexible user intent matching",
+      "fileTriggers": "Add patterns for files that should trigger specific skills"
+    },
+    "usage": {
+      "location": "Place this file in .claude/skills/skill-rules.json",
+      "hook": "Used by UserPromptSubmit hook for automatic skill activation",
+      "extensibility": "Add custom skills with similar structure for project-specific needs"
+    }
+  }
+}

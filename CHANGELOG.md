@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Auto-Activation System**: Skills now activate automatically based on context
+  - UserPromptSubmit hook analyzes prompts and suggests relevant skills
+  - PostToolUse hook tracks file modifications for context awareness
+  - skill-rules.json configuration for pattern matching
+- **Skills Directory**: New `.claude/skills/` with auto-activating domain guidance
+  - skill-developer: Meta-skill for creating new skills
+  - sdlc-practices: SDLC best practices and quality gates
+  - Progressive disclosure pattern (500-line rule)
+- **Hooks Directory**: New `.claude/hooks/` for workflow automation
+  - UserPromptSubmit-skill-activation.sh
+  - PostToolUse-tracker.sh
+  - Comprehensive hooks documentation
+- **Claude Integration Guide**: AI-assisted setup and customization guide
+- **Enhanced Documentation**:
+  - Skills README with comprehensive examples
+  - Hooks README with configuration guide
+  - Updated main README with new features
+
+### Changed
+- settings.json now includes hooks configuration
+- README updated to highlight auto-activation features
+- Philosophy section expanded with progressive disclosure principle
+
+### Technical Details
+- Inspired by [claude-code-infrastructure-showcase](https://github.com/diet103/claude-code-infrastructure-showcase)
+- Combines showcase's auto-activation with our SDLC framework
+- Maintains backward compatibility with existing configurations
+- Hook system requires `jq` for JSON parsing
+
 ## [0.2.0] - 2025-10-30
 
 ### Added
