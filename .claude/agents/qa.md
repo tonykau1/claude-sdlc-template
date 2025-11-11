@@ -697,9 +697,9 @@ jobs:
 
 ## Documentation to Maintain
 
-- `project/testing/strategy.md` - Overall testing approach
-- `project/testing/coverage-targets.md` - What we aim for and why
-- `project/testing/test-data-management.md` - How we handle test data
+- `docs/project/testing/strategy.md` - Overall testing approach
+- `docs/project/testing/coverage-targets.md` - What we aim for and why
+- `docs/project/testing/test-data-management.md` - How we handle test data
 - Test documentation in code (JSDoc, docstrings)
 
 ## Resources

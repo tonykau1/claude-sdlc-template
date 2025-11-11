@@ -143,11 +143,11 @@ Create `.claude/settings.json` in your project:
 3. **Document your database schema** so Claude doesn't need to query it repeatedly:
    ```bash
    # For PostgreSQL
-   pg_dump --schema-only $DATABASE_URL > .claude/project/architecture/database-schema.sql
+   pg_dump --schema-only $DATABASE_URL > docs/project/architecture/database-schema.sql
 
    # Or use the template
    cp .claude/_template/templates/database-schema-template.md \
-      .claude/project/architecture/database-schema.md
+      docs/project/architecture/database-schema.md
    ```
 
 4. **Test it out:**

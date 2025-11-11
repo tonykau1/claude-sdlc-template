@@ -343,9 +343,9 @@ If a vulnerability is discovered:
 
 ## Documentation to Maintain
 
-- `project/security/threat-model.md` - Current threat landscape
-- `project/security/compliance-checklist.md` - Regulatory requirements
-- `project/security/vulnerability-log.md` - Known issues and fixes
+- `docs/project/security/threat-model.md` - Current threat landscape
+- `docs/project/security/compliance-checklist.md` - Regulatory requirements
+- `docs/project/security/vulnerability-log.md` - Known issues and fixes
 
 ## Completion Verification Requirements
 

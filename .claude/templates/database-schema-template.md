@@ -207,7 +207,7 @@ LIMIT 10;
 ### Generating Schema Documentation
 ```bash
 # PostgreSQL - Generate schema.sql
-pg_dump --schema-only $DATABASE_URL > .claude/project/architecture/database-schema.sql
+pg_dump --schema-only $DATABASE_URL > docs/project/architecture/database-schema.sql
 
 # Or use your ORM's schema export
 # Prisma: npx prisma db pull && npx prisma generate

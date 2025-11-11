@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# Pre-commit Hook: Block Direct Commits to Main/Master
+#
+# This hook prevents accidental commits to protected branches.
+# It enforces the branch-based development workflow.
+#
+# Installation:
+#   cp .claude/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+#
+
+set -e
+
+# Get current branch name
+branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+
+# Check if on protected branch
+if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+  echo ""
+  echo "❌ ERROR: Direct commits to '$branch' are not allowed!"
+  echo ""
+  echo "This repository uses a branch-based workflow."
+  echo ""
+  echo "📝 To fix this:"
+  echo "  1. Create a feature branch:"
+  echo "     git checkout -b feature/your-feature-name"
+  echo ""
+  echo "  2. Your changes are already staged, so just commit:"
+  echo "     git commit -m 'your commit message'"
+  echo ""
+  echo "  3. Push your branch:"
+  echo "     git push -u origin feature/your-feature-name"
+  echo ""
+  echo "  4. Create a pull request on GitHub"
+  echo ""
+  echo "💡 Branch naming conventions:"
+  echo "   - feature/add-authentication"
+  echo "   - fix/login-bug"
+  echo "   - hotfix/security-patch"
+  echo ""
+  exit 1
+fi
+
+# If we get here, we're on a feature branch - allow commit
+exit 0

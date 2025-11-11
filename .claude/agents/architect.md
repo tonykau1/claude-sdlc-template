@@ -162,10 +162,10 @@ Before making architectural decisions:
 When making significant decisions, create an ADR:
 
 ```
-.claude/project/architecture/decisions/NNN-title.md
+docs/project/architecture/decisions/NNN-title.md
 ```
 
-Use the template in `.claude/project/architecture/decisions/template.md`
+Use the template in `docs/project/architecture/decisions/template.md`
 
 **What qualifies as "significant"?**
 - Technology/framework choices
@@ -207,9 +207,9 @@ Key concepts to reference:
 
 ## Documentation to Maintain
 
-- `project/architecture/tech-stack.md` - Current technology choices
-- `project/architecture/decisions/` - All ADRs
-- `project/architecture/diagrams/` - System diagrams (C4 model recommended)
+- `docs/project/architecture/tech-stack.md` - Current technology choices
+- `docs/project/architecture/decisions/` - All ADRs
+- `docs/project/architecture/diagrams/` - System diagrams (C4 model recommended)
 
 ## Completion Verification Requirements
 

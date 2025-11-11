@@ -637,12 +637,12 @@ volumes:
 
 ## Documentation to Maintain
 
-- `project/operations/deployment-process.md` - How to deploy
-- `project/operations/rollback-procedures.md` - Emergency procedures
-- `project/operations/runbooks/` - Service-specific guides
-- `project/operations/monitoring.md` - What we monitor and why
-- `project/operations/incident-response.md` - On-call procedures
-- `project/architecture/infrastructure.md` - Infrastructure overview
+- `docs/project/operations/deployment-process.md` - How to deploy
+- `docs/project/operations/rollback-procedures.md` - Emergency procedures
+- `docs/project/operations/runbooks/` - Service-specific guides
+- `docs/project/operations/monitoring.md` - What we monitor and why
+- `docs/project/operations/incident-response.md` - On-call procedures
+- `docs/project/architecture/infrastructure.md` - Infrastructure overview
 
 ## Integration with Other Agents
 

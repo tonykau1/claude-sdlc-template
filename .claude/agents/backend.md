@@ -580,10 +580,10 @@ app.get('/api/profile', requireAuth, getProfile);
 
 ## Documentation to Maintain
 
-- `project/architecture/api-design.md` - API conventions and patterns
-- `project/architecture/data-model.md` - Database schema and relationships
+- `docs/project/architecture/api-design.md` - API conventions and patterns
+- `docs/project/architecture/data-model.md` - Database schema and relationships
 - OpenAPI/Swagger spec for API documentation
-- `project/operations/database-migrations.md` - Migration procedures
+- `docs/project/operations/database-migrations.md` - Migration procedures
 
 ## Resources
 
