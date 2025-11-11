@@ -114,8 +114,8 @@ cd my-existing-project
 git subtree add --prefix .claude/_template \
   https://github.com/yourorg/claude-sdlc-template.git main --squash
 
-# Create project-specific structure
-mkdir -p .claude/project/{architecture,business,features,standards,security,testing,operations}
+# Create project-specific structure (outside .claude for portability)
+mkdir -p docs/project/{architecture,business,features,standards,security,testing,operations,domain}
 
 # Copy and customize main file
 cp .claude/_template/templates/claude.md.template .claude/claude.md
@@ -181,7 +181,7 @@ See: `.claude/_template/templates/completion-report-template.md`
 Document significant decisions:
 ```bash
 cp .claude/_template/templates/adr-template.md \
-   .claude/project/architecture/decisions/001-my-decision.md
+   docs/project/architecture/decisions/001-my-decision.md
 ```
 
 ### 6. Specialized Agents
@@ -242,7 +242,7 @@ A: Yes for your projects. Keep universal improvements separate to contribute bac
 A: Use `./scripts/sync-from-template.sh` in each project to pull updates.
 
 **Q: What if I want to add my own agents?**
-A: Add them to `.claude/project/agents/` - project-specific agents stay local.
+A: Custom agents go in `.claude/agents/` but keep project business logic in `docs/project/` for portability.
 
 **Q: Is this only for Claude Code?**
 A: Primarily, but any AI agent that can read context will benefit.

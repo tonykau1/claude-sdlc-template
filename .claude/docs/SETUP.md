@@ -45,10 +45,10 @@ git subtree add --prefix .claude/_template \
   https://github.com/yourorg/claude-sdlc-template.git main --squash
 
 # Create project-specific directories
-mkdir -p .claude/project/{architecture/decisions,business,features,standards,security,testing,operations}
+mkdir -p docs/project/{architecture/decisions,business,features,standards,security,testing,operations}
 
 # Copy template files you want to customize
-cp .claude/_template/templates/adr-template.md .claude/project/architecture/decisions/template.md
+cp .claude/_template/templates/adr-template.md docs/project/architecture/decisions/template.md
 
 # Record template version
 echo "0.1.0" > .claude/TEMPLATE_VERSION.txt
@@ -95,18 +95,18 @@ Create essential project documentation:
 
 ```bash
 # Business context
-vim .claude/project/business/requirements.md
-vim .claude/project/business/user-personas.md
+vim docs/project/business/requirements.md
+vim docs/project/business/user-personas.md
 
 # Architecture decisions
-vim .claude/project/architecture/tech-stack.md
+vim docs/project/architecture/tech-stack.md
 
 # Security considerations
-vim .claude/project/security/threat-model.md
+vim docs/project/security/threat-model.md
 
 # Code standards
-vim .claude/project/standards/code-style.md
-vim .claude/project/standards/naming-conventions.md
+vim docs/project/standards/code-style.md
+vim docs/project/standards/naming-conventions.md
 ```
 
 ### 3. Customize Checklists (Optional)
@@ -115,10 +115,10 @@ The default checklists are generic. You can add project-specific items:
 
 ```bash
 # Create project-specific checklist overrides
-cp .claude/_template/checklists/pre-commit.md .claude/project/checklists/pre-commit-additions.md
+cp .claude/_template/checklists/pre-commit.md docs/project/checklists/pre-commit-additions.md
 
 # Add your custom requirements
-vim .claude/project/checklists/pre-commit-additions.md
+vim docs/project/checklists/pre-commit-additions.md
 ```
 
 ### 4. Initialize Git Hooks (Optional)
@@ -222,7 +222,7 @@ Template updates rarely conflict with project files since they're in separate di
 
 1. They're likely in .claude/_template/ (universal files)
 2. Accept template changes unless you intentionally modified template files
-3. Your project-specific files (.claude/project/) are never touched by updates
+3. Your project-specific files (docs/project/) are never touched by updates
 
 ### Need Help?
 

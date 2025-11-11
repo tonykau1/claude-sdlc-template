@@ -305,11 +305,11 @@ To maintain context across development sessions:
 git checkout -b feature/feature-name
 
 # 2. Document requirements
-mkdir -p .claude/project/features/feature-name
-vim .claude/project/features/feature-name/requirements.md
+mkdir -p docs/project/features/feature-name
+vim docs/project/features/feature-name/requirements.md
 
 # 3. If architecture decision needed, create ADR
-vim .claude/project/architecture/decisions/NNN-description.md
+vim docs/project/architecture/decisions/NNN-description.md
 
 # 4. Implement with TDD
 # 5. Run pre-commit checklist
@@ -331,8 +331,8 @@ git checkout -b hotfix/bug-name
 ### Make an Architecture Decision
 ```bash
 # 1. Copy ADR template
-cp .claude/project/architecture/decisions/template.md \
-   .claude/project/architecture/decisions/NNN-title.md
+cp docs/project/architecture/decisions/template.md \
+   docs/project/architecture/decisions/NNN-title.md
 
 # 2. Fill out ADR (Context, Decision, Consequences, Alternatives)
 # 3. Discuss with team if needed
@@ -344,12 +344,12 @@ cp .claude/project/architecture/decisions/template.md \
 
 - **Agent configurations**: `.claude/_template/agents/`
 - **Checklists**: `.claude/_template/checklists/`
-- **ADRs**: `.claude/project/architecture/decisions/`
-- **Database schema**: `.claude/project/architecture/database-schema.sql` (or .md)
-- **Feature specs**: `.claude/project/features/`
-- **Business context**: `.claude/project/business/`
-- **Standards**: `.claude/project/standards/`
-- **Security**: `.claude/project/security/`
+- **ADRs**: `docs/project/architecture/decisions/`
+- **Database schema**: `docs/project/architecture/database-schema.sql` (or .md)
+- **Feature specs**: `docs/project/features/`
+- **Business context**: `docs/project/business/`
+- **Standards**: `docs/project/standards/`
+- **Security**: `docs/project/security/`
 - **Migrations**: `[your migrations directory, e.g., /migrations, /db/migrate]`
 - **Scratch work**: `/temp/` and `/scratch/` (gitignored)
 

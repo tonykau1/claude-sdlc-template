@@ -190,7 +190,7 @@ If any of these are true, **STOP** and clarify before proceeding:
 
 After completing this checklist:
 
-1. Create feature documentation in `.claude/project/features/[feature-name]/`
+1. Create feature documentation in `docs/project/features/[feature-name]/`
 2. Consider using [Orchestrator Agent](../_template/agents/orchestrator.md) for complex features
 3. Start with tests (TDD approach)
 4. Implement incrementally with file size discipline

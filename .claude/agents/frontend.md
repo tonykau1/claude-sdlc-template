@@ -387,9 +387,9 @@ Content-Security-Policy:
 
 ## Documentation to Maintain
 
-- `project/standards/design-system.md` - Color palette, typography, spacing
-- `project/standards/component-library.md` - Available components and usage
-- `project/standards/accessibility.md` - a11y standards and testing checklist
+- `docs/project/standards/design-system.md` - Color palette, typography, spacing
+- `docs/project/standards/component-library.md` - Available components and usage
+- `docs/project/standards/accessibility.md` - a11y standards and testing checklist
 - Component Storybook (if using)
 
 ## Resources

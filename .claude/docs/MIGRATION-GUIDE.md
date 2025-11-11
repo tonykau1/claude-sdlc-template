@@ -19,7 +19,7 @@ ls -la .claude/
 # - .claude/agents/*.md         # Custom agents
 # - .claude/settings.json       # Permissions/hooks
 # - .claude/settings.local.json # Local overrides
-# - .claude/project/            # Project-specific docs
+# - docs/project/               # Project-specific docs (preferred location)
 ```
 
 ## Migration Strategy: Side-by-Side Integration
@@ -87,7 +87,7 @@ Now let's safely move your business logic out of agent files into project-specif
 
 ```bash
 # Create organized structure for your business knowledge
-mkdir -p .claude/project/{business,architecture,features,domain,apis}
+mkdir -p docs/project/{business,architecture,features,domain,apis,standards,security,testing,operations}
 ```
 
 #### 3.3: Extract from Existing Agents
@@ -119,7 +119,7 @@ You handle payment processing using Stripe and Helio.
 
 **Extract to new structure:**
 
-**`.claude/project/business/payment-rules.md`** (business logic):
+**`docs/project/business/payment-rules.md`** (business logic):
 ```markdown
 # Payment Business Rules
 
@@ -139,7 +139,7 @@ You handle payment processing using Stripe and Helio.
 - Support chargebacks per Visa/Mastercard rules
 ```
 
-**`.claude/project/architecture/payment-flow.md`** (implementation details):
+**`docs/project/architecture/payment-flow.md`** (implementation details):
 ```markdown
 # Payment System Architecture
 
@@ -152,7 +152,7 @@ You handle payment processing using Stripe and Helio.
 - Webhook URLs: /api/webhooks/stripe, /api/webhooks/helio
 
 ## Database Schema
-See: `.claude/project/architecture/schema/payments-tables.sql`
+See: `docs/project/architecture/schema/payments-tables.sql`
 ```
 
 **Reference the SDLC template's payment agent** (if applicable):
@@ -162,8 +162,8 @@ See: `.claude/project/architecture/schema/payments-tables.sql`
 For payment implementation, reference:
 - General patterns: `.claude/_template/agents/backend.md`
 - Security: `.claude/_template/agents/security.md`
-- Business rules: `.claude/project/business/payment-rules.md`
-- Architecture: `.claude/project/architecture/payment-flow.md`
+- Business rules: `docs/project/business/payment-rules.md`
+- Architecture: `docs/project/architecture/payment-flow.md`
 ```
 
 ### Step 4: Update Your Main claude.md
@@ -183,14 +183,14 @@ Template agents and checklists: `.claude/_template/`
 ## Business-Specific Information
 
 ### Domain Knowledge
-See: `.claude/project/business/` for:
+See: `docs/project/business/` for:
 - Payment rules and commission structure
 - User tier system (anonymous/authenticated/premium)
 - Referral program mechanics
 - Regulatory requirements
 
 ### Architecture
-See: `.claude/project/architecture/` for:
+See: `docs/project/architecture/` for:
 - System architecture diagrams
 - Database schema
 - API specifications
@@ -218,9 +218,9 @@ Use the SDLC template workflow:
 ## Important Files & Locations
 
 ### Business Logic (OURS - project-specific)
-- `.claude/project/business/` - Business rules and domain knowledge
-- `.claude/project/architecture/` - System design and schemas
-- `.claude/project/features/` - Feature specifications
+- `docs/project/business/` - Business rules and domain knowledge
+- `docs/project/architecture/` - System design and schemas
+- `docs/project/features/` - Feature specifications
 
 ### Best Practices (TEMPLATE - universal patterns)
 - `.claude/_template/agents/` - Specialized agent patterns
@@ -230,7 +230,7 @@ Use the SDLC template workflow:
 ## Agent Instructions
 
 When working on this project:
-1. **First**, read business logic from `.claude/project/`
+1. **First**, read business logic from `docs/project/`
 2. **Then**, apply best practices from `.claude/_template/`
 3. **Always** consider our specific business rules
 4. **Reference** template agents for general patterns
@@ -259,7 +259,7 @@ to coordinate between specialists.
 ```bash
 # Start using evidence-based completion
 cp .claude/_template/templates/completion-report-template.md \
-   .claude/project/templates/completion-report.md
+   docs/project/templates/completion-report.md
 ```
 
 #### Week 4+: Migrate Custom Agents (Optional)
@@ -277,8 +277,8 @@ Gradually replace custom agents with template versions + business logic docs.
 **After:**
 ```
 .claude/_template/agents/backend.md   (template patterns)
-.claude/project/business/payments.md  (your business rules)
-.claude/project/architecture/payment-system.md (your architecture)
+docs/project/business/payments.md  (your business rules)
+docs/project/architecture/payment-system.md (your architecture)
 ```
 
 ### Pattern 2: Settings Migration
@@ -364,35 +364,35 @@ In your `claude.md`:
 **Extract:**
 ```bash
 # Move API docs to project structure
-mkdir -p .claude/project/apis
-mv your-api-docs.md .claude/project/apis/
+mkdir -p docs/project/apis
+mv your-api-docs.md docs/project/apis/
 
 # Reference in claude.md:
 ## API Documentation
-See: `.claude/project/apis/` for endpoint specifications
+See: `docs/project/apis/` for endpoint specifications
 ```
 
 ### Scenario 2: "Our agents have company-specific coding standards"
 
 **Extract:**
 ```bash
-mkdir -p .claude/project/standards
+mkdir -p docs/project/standards
 # Move standards to:
-.claude/project/standards/
+docs/project/standards/
 ├── code-style.md      # Your linting rules, naming conventions
 ├── git-workflow.md    # Your branching strategy
 ├── review-process.md  # Your PR requirements
 
 # Use template standards as baseline:
 # Reference `.claude/_template/templates/standards/file-size-discipline.md`
-# Add your customizations in `.claude/project/standards/`
+# Add your customizations in `docs/project/standards/`
 ```
 
 ### Scenario 3: "We have custom tools/scripts agents need to know about"
 
 **Document:**
 ```markdown
-# .claude/project/tools/custom-tools.md
+# docs/project/tools/custom-tools.md
 
 ## Custom Scripts
 
@@ -421,9 +421,9 @@ Use this checklist to ensure nothing is lost:
 
 ### During Migration
 - [ ] Install template as `.claude/_template/` (preserves your files)
-- [ ] Create `.claude/project/` structure
-- [ ] Extract business logic to `.claude/project/business/`
-- [ ] Extract architecture to `.claude/project/architecture/`
+- [ ] Create `docs/project/` structure
+- [ ] Extract business logic to `docs/project/business/`
+- [ ] Extract architecture to `docs/project/architecture/`
 - [ ] Extract domain knowledge to appropriate locations
 - [ ] Update `.claude/claude.md` to reference both template and business logic
 
@@ -446,7 +446,7 @@ Use this checklist to ensure nothing is lost:
 
 Use clear, consistent locations:
 ```
-.claude/project/
+docs/project/
 ├── business/           # Business rules, domain knowledge
 ├── architecture/       # System design, schemas, APIs
 ├── features/          # Feature specifications
@@ -462,8 +462,8 @@ In your `.claude/claude.md`:
 
 **General practices**: See `.claude/_template/agents/security.md`
 **Our specific requirements**:
-- HIPAA compliance checklist: `.claude/project/business/hipaa-requirements.md`
-- PCI DSS validation: `.claude/project/security/pci-compliance.md`
+- HIPAA compliance checklist: `docs/project/business/hipaa-requirements.md`
+- PCI DSS validation: `docs/project/security/pci-compliance.md`
 ```
 
 ### 3. Use Template as Foundation
@@ -481,11 +481,11 @@ Add to your project's README.md:
 This project uses the Claude SDLC Template with project-specific extensions:
 
 - **Template** (`.claude/_template/`): Universal best practices and patterns
-- **Project** (`.claude/project/`): Our business logic and domain knowledge
+- **Project** (`docs/project/`): Our business logic and domain knowledge
 - **Main file** (`.claude/claude.md`): Integration point
 
 When working with Claude Code:
-1. Business context comes from `.claude/project/`
+1. Business context comes from `docs/project/`
 2. Best practices come from `.claude/_template/`
 3. See `.claude/claude.md` for the complete picture
 ```
@@ -500,11 +500,11 @@ When working with Claude Code:
 ```markdown
 ## IMPORTANT: Business Logic Location
 
-All business rules are in `.claude/project/business/`
+All business rules are in `docs/project/business/`
 Always read these files before implementing features:
-- `.claude/project/business/payment-rules.md`
-- `.claude/project/business/user-tiers.md`
-- `.claude/project/business/referral-program.md`
+- `docs/project/business/payment-rules.md`
+- `docs/project/business/user-tiers.md`
+- `docs/project/business/referral-program.md`
 ```
 
 ### "Template overwrote my custom agent"
@@ -593,7 +593,7 @@ Here's a before/after for a real project:
 **Migration = Reorganize, Don't Replace**
 
 1. **Install template as `.claude/_template/`** (side-by-side, non-destructive)
-2. **Extract business logic** to `.claude/project/`
+2. **Extract business logic** to `docs/project/`
 3. **Update `.claude/claude.md`** to reference both
 4. **Gradually adopt** template features (orchestrator, checklists, standards)
 5. **Keep what's unique** (truly domain-specific agents if needed)
@@ -603,7 +603,7 @@ Your business knowledge is preserved, organized, and enhanced with universal bes
 ## Next Steps
 
 1. Follow this guide step-by-step
-2. Create an ADR documenting your migration: `.claude/project/architecture/decisions/001-integrate-sdlc-template.md`
+2. Create an ADR documenting your migration: `docs/project/architecture/decisions/001-integrate-sdlc-template.md`
 3. Update team documentation
 4. Start using plan-then-execute workflow!
 

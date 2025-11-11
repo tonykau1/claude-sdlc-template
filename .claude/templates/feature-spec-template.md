@@ -191,7 +191,7 @@ CREATE INDEX idx_[name] ON [table]([columns]);
 - [Library name]: [Purpose and why chosen]
 
 **If New Technology:**
-- Create ADR: `.claude/project/architecture/decisions/NNN-description.md`
+- Create ADR: `docs/project/architecture/decisions/NNN-description.md`
 
 ### Code Organization
 

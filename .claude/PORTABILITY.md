@@ -1,58 +1,101 @@
 # Portability Guide: Bringing This Template to Other Projects
 
-## ✅ Complete Self-Containment
+## ✅ Complete Portability with Clear Separation
 
-**Everything you need is in this directory (`.claude/`).**
+**This template separates infrastructure from business logic:**
 
-No external dependencies, no scattered files, no confusion. Copy this directory to any project and you're ready to go.
+- **`.claude/`** = Infrastructure (agents, skills, hooks, checklists) - **Replaceable, portable, updatable**
+- **`docs/project/`** = Your business logic, domain knowledge, project-specific docs - **Never touched by template updates**
+
+This separation means you can safely replace the entire `.claude/` directory when the template is updated, without losing any of your project-specific documentation or business logic.
+
+### Why This Matters
+
+When you use this template across multiple projects:
+1. Copy `.claude/` to each project for infrastructure
+2. Create `docs/project/` for that project's unique business logic
+3. Update `.claude/` anytime without fear of losing business docs
+4. Your domain knowledge stays safe in `docs/project/`
 
 ---
 
-## 🚀 Quick Copy (3 Steps)
+## 🚀 Quick Copy (5 Steps)
 
 ```bash
-# 1. Copy the entire .claude/ directory
+# 1. Copy the entire .claude/ directory (infrastructure)
 cp -r /path/to/template/.claude /path/to/your-project/
 
-# 2. Install hook dependencies (enables auto-activation)
-cd /path/to/your-project/.claude/hooks
+# 2. Create docs/project/ structure (your business logic home)
+cd /path/to/your-project
+mkdir -p docs/project/{architecture,business,features,standards,security,testing,operations,domain}
+
+# 3. Install hook dependencies (enables auto-activation)
+cd .claude/hooks
 npm install
 
-# 3. Done! (Optional: customize for your project)
+# 4. Install git hooks (blocks commits to main/master)
+cd ../..
+./.claude/hooks/install-git-hooks.sh
+
+# 5. Done! Start adding your business logic to docs/project/
 ```
 
-That's it! Skills will auto-activate, agents are ready, checklists available.
+That's it! Skills will auto-activate, agents are ready, checklists available, main branch is protected, and you have a dedicated place for your business logic that won't be overwritten during template updates.
 
 ---
 
 ## 📦 What's Included
 
-Everything in `.claude/`:
+### In `.claude/` (Infrastructure - Portable & Replaceable)
 
-### Configuration
+**Configuration**
 - `settings.json` - Shared permissions & hooks (commit to git)
 - `settings.local.json.example` - Template for local overrides
 - `CLAUDE.md` - Main agent instructions (customize per project)
 
-### Documentation
+**Documentation (Template Docs)**
 - `README.md` - This directory's guide
 - `QUICK-START.md` - Fast setup
-- `docs/` - All guides and documentation
+- `PORTABILITY.md` - This file
+- `docs/` - All template guides
   - QUICKSTART.md
   - SETUP.md
   - MIGRATION-GUIDE.md
   - SHOWCASE-INTEGRATION.md
   - WHATS-NEW.md
   - CLAUDE-SETTINGS.md
+  - GIT-WORKFLOW.md
+  - GITHUB-BRANCH-PROTECTION.md
   - CONTRIBUTING.md
 
-### Core Systems
-- `agents/` - 7 specialized agents
-- `skills/` - Auto-activating skills
-- `hooks/` - Automation system
-- `checklists/` - Quality gates
-- `templates/` - Document templates
-- `project/` - Your project-specific docs
+**Core Systems (Infrastructure)**
+- `agents/` - 7 specialized agents (orchestrator, architect, qa, backend, frontend, devops, security)
+- `skills/` - Auto-activating skills with sophisticated trigger rules
+- `hooks/` - Automation system (TypeScript hooks, git hooks)
+- `checklists/` - Quality gates and verification checklists
+- `templates/` - Document templates (ADR, feature specs, etc.)
+
+### In `docs/project/` (Your Business Logic - Never Overwritten)
+
+**You create this structure in your project:**
+
+```
+docs/project/
+├── architecture/     # Your system design, tech stack, ADRs
+├── business/         # Your requirements, user stories, roadmaps
+├── domain/          # Your domain models, terminology, business rules
+├── features/        # Your feature specifications
+├── security/        # Your security policies, compliance docs
+├── standards/       # Your coding standards, conventions
+├── testing/         # Your test strategies, QA processes
+└── operations/      # Your deployment, monitoring, runbooks
+```
+
+**This separation means:**
+- ✅ Template updates don't touch your business logic
+- ✅ You can replace `.claude/` completely without losing anything
+- ✅ Your domain knowledge is separate from infrastructure
+- ✅ Clean portability across projects
 
 ---
 
@@ -202,31 +245,36 @@ git subtree pull --prefix .claude claude-template main --squash
 
 **What to preserve:**
 - `.claude/CLAUDE.md` - Your project instructions
-- `.claude/project/` - Your business logic
+- `docs/project/` - Your business logic
 - `.claude/settings.local.json` - Your local settings
 - Custom skills in `.claude/skills/`
 
-### Option 2: Manual Update
+### Option 2: Complete Replacement (Easiest!)
 
-1. **Backup customizations:**
+**Because business logic is in `docs/project/`, you can simply replace `.claude/` entirely:**
+
+1. **Backup only `.claude/CLAUDE.md` (your customized instructions):**
 ```bash
-cp .claude/CLAUDE.md ~/backup/
-cp -r .claude/project ~/backup/
-cp .claude/skills/skill-rules.json ~/backup/
+cp .claude/CLAUDE.md ~/backup/CLAUDE.md
 ```
 
-2. **Pull new template:**
+2. **Replace entire .claude/ directory:**
 ```bash
 rm -rf .claude
 cp -r /new-template/.claude .
 ```
 
-3. **Restore customizations:**
+3. **Restore your customized CLAUDE.md:**
 ```bash
-cp ~/backup/CLAUDE.md .claude/
-cp -r ~/backup/project .claude/
-# Merge skill-rules.json manually
+cp ~/backup/CLAUDE.md .claude/CLAUDE.md
 ```
+
+4. **Done!** Your business logic in `docs/project/` was never touched. No merge conflicts, no manual restoration.
+
+**This is the power of separation:**
+- Infrastructure (`.claude/`) is replaceable
+- Business logic (`docs/project/`) is preserved
+- Updates are fast and conflict-free
 
 ---
 
@@ -487,7 +535,7 @@ cat ../.claude/QUICK-START.md
 
 ### Week 1: Contribute
 
-1. Add domain knowledge to `.claude/project/`
+1. Add domain knowledge to `docs/project/`
 2. Suggest new skills
 3. Improve checklists
 
